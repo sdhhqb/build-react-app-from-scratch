@@ -88,7 +88,7 @@ babel-core, babel-loader, babel-preset-es2015, babel-preset-react, babel-preset-
   <body>
     <div id="reactapp"></div>
 
-    <script src=“./build/js/bundle.js"></script>
+    <script src="./build/js/bundle.js"></script>
   </body>
 </html>
 ```
