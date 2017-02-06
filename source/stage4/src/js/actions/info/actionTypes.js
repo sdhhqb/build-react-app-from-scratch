@@ -1,0 +1,1 @@
+export const INFO_GET_FORECAST = 'INFO_GET_FORECAST';
