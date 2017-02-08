@@ -123,6 +123,35 @@ ReactDOM.render(
 
 ###编码(19)
 
+1.新建js/configStore.js文件并添加以下内容
+```jsx
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import createLogger from 'redux-logger';
+import { routerReducer } from 'react-router-redux';
+import reducer from './reducers';
+
+// 合并App和react-router的reducer
+var combinedReducers = combineReducers(Object.assign({}, {app: reducer}, {routing: routerReducer}));
+// redux调试log中间件
+var loggerMiddleware = createLogger();
+// 带中间件的store函数
+function configStore (initialState) {
+  var store = createStore(combinedReducers, initialState, compose(
+    applyMiddleware(
+      thunkMiddleware,
+      loggerMiddleware
+    ),
+    window.devToolsExtension ? window.devToolsExtension() : f => f  //chrome扩展redux调试工具
+    )
+  );
+  return store;
+}
+export default configStore;
+```
+
+###编码(20)
+
 连接到redux store
 
 1.修改js/components/info/index.js，在顶部增加引入
@@ -153,7 +182,7 @@ export default connect(
 )(Info);
 ```
 
-###编码(20)
+###编码(21)
 
 显示接口返回内容
 
@@ -193,7 +222,7 @@ render() {
   }
 ```
 
-###编码(21)
+###编码(22)
 
 显示接口返回内容
 
