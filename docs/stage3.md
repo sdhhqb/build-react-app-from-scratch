@@ -65,7 +65,7 @@ export const INFO_GET_FORECAST = 'INFO_GET_FORECAST';
 
 1.在js/reducers目录中创建index.js和js/info/index.js文件
 
-2.在js/info/index.js文件中添加以下内容
+2.在js/reducers/info/index.js文件中添加以下内容
 ```jsx
 import * as ActionTypes from '../../actions/info/actionTypes';
 
@@ -100,6 +100,25 @@ var appReducer = combineReducers({
 });
 
 export default appReducer;
+```
+
+2.修改js/index.js为以下内容
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Router, browserHistory } from 'react-router';
+import { Provider } from 'react-redux';
+
+import routes from './routes';
+import configStore from './configStore';
+var store = configStore();
+
+ReactDOM.render(
+	<Provider store={store}>
+		<Router history={browserHistory} routes={routes}></Router>
+	</Provider>,
+  document.getElementById('reactapp')
+);
 ```
 
 ###编码(19)
