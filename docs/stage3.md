@@ -89,7 +89,7 @@ export default function(state = initialState, action) {
 
 添加reducer
 
-1.在js/index.js文件中添加以下内容
+1.在js/reducers/index.js文件中添加以下内容
 ```jsx
 import { combineReducers } from 'redux';
 import info from './info';
